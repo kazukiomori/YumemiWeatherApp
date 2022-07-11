@@ -16,20 +16,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W3R-uE-vKc">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W3R-uE-vKc">
                                 <rect key="frame" x="87" y="328" width="240" height="240"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="v87-vu-VMF">
                                         <rect key="frame" x="8" y="182" width="220" height="50"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y0U-y3-FVp">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y0U-y3-FVp">
                                                 <rect key="frame" x="0.0" y="0.0" width="110" height="50"/>
                                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l1R-ZX-gUY">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l1R-ZX-gUY">
                                                 <rect key="frame" x="110" y="0.0" width="110" height="50"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -60,19 +60,25 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="33" translatesAutoresizingMaskIntoConstraints="NO" id="vyy-8E-zHE">
-                                <rect key="frame" x="87" y="697" width="220" height="31"/>
+                                <rect key="frame" x="87" y="641" width="220" height="31"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="91Q-YG-SGL">
                                         <rect key="frame" x="0.0" y="0.0" width="93.5" height="31"/>
                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="100" right="8"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Close"/>
+                                        <connections>
+                                            <action selector="closeBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="au4-MW-PFs"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LT0-dn-LqY">
                                         <rect key="frame" x="126.5" y="0.0" width="93.5" height="31"/>
                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="100" right="8"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Reload"/>
+                                        <connections>
+                                            <action selector="reloadBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="76E-YQ-Ipz"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -85,15 +91,14 @@
                         <constraints>
                             <constraint firstItem="W3R-uE-vKc" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="AOq-Ls-szc"/>
                             <constraint firstItem="vyy-8E-zHE" firstAttribute="leading" secondItem="W3R-uE-vKc" secondAttribute="leading" id="Wtt-xu-9Jd"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="W3R-uE-vKc" secondAttribute="bottom" constant="350" id="bFH-Iy-TdA"/>
-                            <constraint firstItem="W3R-uE-vKc" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="bvz-zK-H1i"/>
-                            <constraint firstItem="W3R-uE-vKc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="d9u-V8-c3h"/>
                             <constraint firstItem="W3R-uE-vKc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="iIa-OR-1PC"/>
                             <constraint firstItem="W3R-uE-vKc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="j1R-So-wbb"/>
-                            <constraint firstItem="W3R-uE-vKc" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="lKl-r1-FkK"/>
                             <constraint firstItem="vyy-8E-zHE" firstAttribute="top" secondItem="W3R-uE-vKc" secondAttribute="bottom" constant="73" id="tLj-hw-M6y"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="weatherImageView" destination="tLv-TS-dna" id="yWg-lf-VvA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
