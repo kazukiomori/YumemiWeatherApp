@@ -46,6 +46,8 @@ class ViewController: UIViewController {
             ViewController.showError(title: "不正なパラメータエラー", message: "パラメータが不正です。", self)
         } catch YumemiWeatherError.unknownError {
             ViewController.showError(title: "不明なエラー", message: "不明なエラーです。", self)
+        } catch {
+            ViewController.showError(title: "エラー", message: "エラーが発生しました。", self)
         }
     }
 }
