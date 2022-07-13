@@ -30,9 +30,11 @@ class ViewController: UIViewController {
     }
     
     @IBAction func reloadBtnTapped(_ sender: UIButton) {
+        let parameter = AreaAndDate(area: "tokyo", date: "2020-04-01T12:00:00+09:00")
+        var stringJson = encodeToJson(parameter: parameter)
         var weather: String
         do {
-            try weather = YumemiWeather.fetchWeatherCondition(at:"tokyo")
+            try weather = YumemiWeather.fetchWeather(stringJson)
             switch weather {
             case "sunny" :
                 weatherImageView.image = #imageLiteral(resourceName: "iconmonstr-weather-1.pdf")
@@ -49,6 +51,19 @@ class ViewController: UIViewController {
         } catch {
             ViewController.showError(title: "エラー", message: "エラーが発生しました。", self)
         }
+    }
+    
+    func encodeToJson(parameter: AreaAndDate) -> String {
+        var jsonString:String? = ""
+        do {
+            let encoder = JSONEncoder()
+            encoder.outputFormatting = [.prettyPrinted, .withoutEscapingSlashes]
+            let jsonData = try encoder.encode(parameter)
+            jsonString = String(data: jsonData, encoding: .utf8)
+        } catch {
+            print(error.localizedDescription)
+        }
+        return jsonString!
     }
 }
 
