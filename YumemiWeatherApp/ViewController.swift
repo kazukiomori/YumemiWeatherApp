@@ -12,6 +12,9 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var weatherImageView: UIImageView!
     
+    @IBOutlet weak var minTemperatureLabel: UILabel!
+    @IBOutlet weak var maxTemperatureLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -32,10 +35,16 @@ class ViewController: UIViewController {
     @IBAction func reloadBtnTapped(_ sender: UIButton) {
         let parameter = AreaAndDate(area: "tokyo", date: "2020-04-01T12:00:00+09:00")
         var stringJson = encodeToJson(parameter: parameter)
-        var weather: String
+        var result: String
         do {
-            try weather = YumemiWeather.fetchWeather(stringJson)
-            switch weather {
+            try result = YumemiWeather.fetchWeather(stringJson)
+            let jsonData = result.data(using: .utf8)
+            if jsonData == nil {
+                return
+            }
+            let jsonResult = try! JSONDecoder().decode(Result.self, from: jsonData!)
+
+            switch jsonResult.weather_condition {
             case "sunny" :
                 weatherImageView.image = #imageLiteral(resourceName: "iconmonstr-weather-1.pdf")
             case "cloudy" :
@@ -43,6 +52,11 @@ class ViewController: UIViewController {
             case "rainy":
                 weatherImageView.image = #imageLiteral(resourceName: "iconmonstr-umbrella-1.pdf")
             default: break
+            }
+            
+            DispatchQueue.main.async {
+                self.minTemperatureLabel.text = String(jsonResult.min_temperature)
+                self.maxTemperatureLabel.text = String(jsonResult.max_temperature)
             }
         } catch YumemiWeatherError.invalidParameterError {
             ViewController.showError(title: "不正なパラメータエラー", message: "パラメータが不正です。", self)
