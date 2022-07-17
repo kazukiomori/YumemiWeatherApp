@@ -17,7 +17,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadWether), name: .notifyName, object: nil)
     }
     
     static func showError (title: String, message: String, _ viewController: UIViewController) {
@@ -33,6 +34,10 @@ class ViewController: UIViewController {
     }
     
     @IBAction func reloadBtnTapped(_ sender: UIButton) {
+        reloadWether()
+    }
+    
+    @objc func reloadWether() {
         let parameter = AreaAndDate(area: "tokyo", date: "2020-04-01T12:00:00+09:00")
         var stringJson = encodeToJson(parameter: parameter)
         var result: String
@@ -81,3 +86,6 @@ class ViewController: UIViewController {
     }
 }
 
+extension Notification.Name {
+    static let notifyName = Notification.Name("notifyName")
+}
