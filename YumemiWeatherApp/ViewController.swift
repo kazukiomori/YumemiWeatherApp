@@ -8,14 +8,14 @@
 import UIKit
 import YumemiWeather
 
-class ViewController: UIViewController {
+public class ViewController: UIViewController {
 
     @IBOutlet weak var weatherImageView: UIImageView!
     
     @IBOutlet weak var minTemperatureLabel: UILabel!
     @IBOutlet weak var maxTemperatureLabel: UILabel!
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(reloadWether), name: .notifyName, object: nil)
