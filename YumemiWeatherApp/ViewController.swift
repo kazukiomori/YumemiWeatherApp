@@ -8,7 +8,7 @@
 import UIKit
 import YumemiWeather
 
-public class ViewController: UIViewController {
+public class ViewController: UIViewController, WeatherModel {
 
     @IBOutlet weak var weatherImageView: UIImageView!
     
